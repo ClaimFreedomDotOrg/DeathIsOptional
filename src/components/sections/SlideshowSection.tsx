@@ -47,9 +47,9 @@ export function SlideshowSection() {
             borderColor: "rgba(200,169,110,0.12)",
           }}
         >
-          {/* PDF embed */}
+          {/* PDF embed via Google Docs viewer */}
           <iframe
-            src={`${SLIDES_PDF}#view=FitH`}
+            src={`https://docs.google.com/gview?url=https://deathisoptional.org${SLIDES_PDF}&embedded=true`}
             className="w-full"
             style={{ height: 600, border: "none" }}
             title="The Architecture of Immortality — Slides"
