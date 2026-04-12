@@ -6,6 +6,7 @@ import { InfographicsSection } from "@/components/sections/InfographicsSection";
 import { SlideshowSection } from "@/components/sections/SlideshowSection";
 import { DownloadSection } from "@/components/sections/DownloadSection";
 import { ExploreMore } from "@/components/sections/ExploreMore";
+import { HaloSection } from "@/components/sections/HaloSection";
 import { ContactSection } from "@/components/sections/ContactSection";
 import { Footer } from "@/components/Footer";
 
@@ -21,6 +22,7 @@ export default function App() {
         <SlideshowSection />
         <DownloadSection />
         <ExploreMore />
+        <HaloSection />
         <ContactSection />
       </main>
       <Footer />
