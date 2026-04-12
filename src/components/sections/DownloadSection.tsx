@@ -8,8 +8,8 @@ const downloads = [
     subtitle: "The Architecture of Immortality",
     description:
       "The complete book. A unified theory of consciousness, entropy, and eternal life — spanning physics, neuroscience, thermodynamics, and every major wisdom tradition. Written for anyone.",
-    file: "/COHERENCE_The_Architecture_of_Immortality.pdf",
-    filename: "COHERENCE_The_Architecture_of_Immortality.pdf",
+    file: "/COHERENCE_The_Architecture_of_Immortality_v1.0.pdf",
+    filename: "COHERENCE_The_Architecture_of_Immortality_v1.0.pdf",
     label: "Download the Book",
   },
   {
