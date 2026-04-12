@@ -1,9 +1,7 @@
 import { motion } from "framer-motion";
-import { PresentationIcon, Download } from "lucide-react";
+import { Download, ExternalLink } from "lucide-react";
 
-// PLACEHOLDER: Replace with actual slideshow embed/download when available
-const SLIDESHOW_EMBED = "";
-const SLIDESHOW_DOWNLOAD = "";
+const SLIDES_PDF = "/The_Architecture_of_Immortality_Slides.pdf";
 
 export function SlideshowSection() {
   return (
@@ -33,8 +31,8 @@ export function SlideshowSection() {
             The Slideshow
           </h2>
           <p className="text-base leading-relaxed" style={{ color: "#6a6460" }}>
-            A complete slide presentation of the COHERENCE framework — view inline or download
-            to share.
+            The Architecture of Immortality — a complete slide presentation of the COHERENCE
+            framework. View inline or download to share.
           </p>
         </motion.div>
 
@@ -47,49 +45,48 @@ export function SlideshowSection() {
           style={{
             background: "#0f0f0f",
             borderColor: "rgba(200,169,110,0.12)",
-            minHeight: 480,
           }}
         >
-          {SLIDESHOW_EMBED ? (
-            <div>
-              <iframe
-                src={SLIDESHOW_EMBED}
-                className="w-full"
-                style={{ minHeight: 480, border: "none" }}
-                title="COHERENCE Slideshow"
-                allowFullScreen
-              />
-              {SLIDESHOW_DOWNLOAD && (
-                <div className="p-6 text-center border-t" style={{ borderColor: "rgba(200,169,110,0.12)" }}>
-                  <a
-                    href={SLIDESHOW_DOWNLOAD}
-                    download
-                    className="inline-flex items-center gap-2 px-6 py-3 rounded-lg font-semibold text-sm border transition-colors duration-200"
-                    style={{
-                      borderColor: "rgba(200,169,110,0.3)",
-                      color: "#c8a96e",
-                    }}
-                  >
-                    <Download size={16} />
-                    Download Slideshow
-                  </a>
-                </div>
-              )}
-            </div>
-          ) : (
-            /* Placeholder */
-            <div className="flex flex-col items-center justify-center gap-4 py-24">
-              <div
-                className="w-16 h-16 rounded-full border-2 flex items-center justify-center"
-                style={{ borderColor: "rgba(200,169,110,0.3)" }}
-              >
-                <PresentationIcon size={24} style={{ color: "#c8a96e" }} />
-              </div>
-              <p className="text-sm font-mono" style={{ color: "#3a3430" }}>
-                Slideshow · Coming Soon
-              </p>
-            </div>
-          )}
+          {/* PDF embed */}
+          <iframe
+            src={`${SLIDES_PDF}#view=FitH`}
+            className="w-full"
+            style={{ height: 600, border: "none" }}
+            title="The Architecture of Immortality — Slides"
+          />
+
+          {/* Actions */}
+          <div
+            className="flex flex-wrap gap-3 p-6 border-t"
+            style={{ borderColor: "rgba(200,169,110,0.08)" }}
+          >
+            <a
+              href={SLIDES_PDF}
+              download="The_Architecture_of_Immortality_Slides.pdf"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-lg font-semibold text-sm border transition-colors duration-200"
+              style={{
+                borderColor: "rgba(200,169,110,0.3)",
+                color: "#c8a96e",
+                background: "rgba(200,169,110,0.04)",
+              }}
+            >
+              <Download size={15} />
+              Download Slideshow PDF
+            </a>
+            <a
+              href={SLIDES_PDF}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-lg font-semibold text-sm border transition-colors duration-200"
+              style={{
+                borderColor: "rgba(200,169,110,0.15)",
+                color: "#6a6460",
+              }}
+            >
+              <ExternalLink size={15} />
+              Open Full Screen
+            </a>
+          </div>
         </motion.div>
       </div>
     </section>

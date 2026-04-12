@@ -1,14 +1,27 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronLeft, ChevronRight, ImageIcon } from "lucide-react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
-// PLACEHOLDER: Replace with actual infographic paths when uploaded
-// Example: { src: "/infographics/fear-cascade.png", caption: "The Fear Cascade" }
-const INFOGRAPHICS: { src: string; caption: string }[] = [];
+const INFOGRAPHICS = [
+  {
+    src: "/infographic-landscape.png",
+    caption: "The Coherence Framework — Landscape",
+    aspect: "landscape",
+  },
+  {
+    src: "/infographic-portrait.png",
+    caption: "The Coherence Framework — Portrait",
+    aspect: "portrait",
+  },
+  {
+    src: "/infographic-square.png",
+    caption: "The Coherence Framework — Square",
+    aspect: "square",
+  },
+];
 
 export function InfographicsSection() {
   const [current, setCurrent] = useState(0);
-  const hasContent = INFOGRAPHICS.length > 0;
 
   function prev() {
     setCurrent((c) => (c - 1 + INFOGRAPHICS.length) % INFOGRAPHICS.length);
@@ -44,8 +57,8 @@ export function InfographicsSection() {
             The Architecture, Visualized
           </h2>
           <p className="text-base leading-relaxed" style={{ color: "#6a6460" }}>
-            Key concepts from COHERENCE rendered as infographics — the causal chain, the
-            nervous system map, the coherence threshold.
+            Key concepts from COHERENCE rendered as infographics. Available in landscape,
+            portrait, and square formats — share freely.
           </p>
         </motion.div>
 
@@ -58,69 +71,89 @@ export function InfographicsSection() {
           style={{
             background: "#0f0f0f",
             borderColor: "rgba(200,169,110,0.12)",
-            minHeight: 480,
           }}
         >
-          {hasContent ? (
-            <div className="relative">
-              <AnimatePresence mode="wait">
-                <motion.img
-                  key={current}
-                  src={INFOGRAPHICS[current].src}
-                  alt={INFOGRAPHICS[current].caption}
-                  className="w-full object-contain"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.3 }}
-                />
-              </AnimatePresence>
+          {/* Slide */}
+          <div className="relative">
+            <AnimatePresence mode="wait">
+              <motion.img
+                key={current}
+                src={INFOGRAPHICS[current].src}
+                alt={INFOGRAPHICS[current].caption}
+                className="w-full object-contain"
+                style={{ maxHeight: 600 }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.25 }}
+              />
+            </AnimatePresence>
+          </div>
 
-              {/* Controls */}
-              {INFOGRAPHICS.length > 1 && (
-                <div className="absolute inset-x-0 bottom-0 flex items-center justify-between p-6">
-                  <button
-                    onClick={prev}
-                    className="w-10 h-10 rounded-full border flex items-center justify-center transition-colors duration-200"
-                    style={{
-                      background: "rgba(8,8,8,0.8)",
-                      borderColor: "rgba(200,169,110,0.2)",
-                      color: "#c8a96e",
-                    }}
-                  >
-                    <ChevronLeft size={18} />
-                  </button>
-                  <span className="text-xs font-mono" style={{ color: "#6a6460" }}>
-                    {current + 1} / {INFOGRAPHICS.length}
-                  </span>
-                  <button
-                    onClick={next}
-                    className="w-10 h-10 rounded-full border flex items-center justify-center transition-colors duration-200"
-                    style={{
-                      background: "rgba(8,8,8,0.8)",
-                      borderColor: "rgba(200,169,110,0.2)",
-                      color: "#c8a96e",
-                    }}
-                  >
-                    <ChevronRight size={18} />
-                  </button>
-                </div>
-              )}
+          {/* Controls */}
+          <div
+            className="flex items-center justify-between px-6 py-4 border-t"
+            style={{ borderColor: "rgba(200,169,110,0.08)" }}
+          >
+            <button
+              onClick={prev}
+              className="w-9 h-9 rounded-full border flex items-center justify-center transition-colors duration-200 hover:border-[#c8a96e]/50"
+              style={{
+                background: "#0f0f0f",
+                borderColor: "rgba(200,169,110,0.2)",
+                color: "#c8a96e",
+              }}
+            >
+              <ChevronLeft size={16} />
+            </button>
+
+            <div className="flex items-center gap-3">
+              {INFOGRAPHICS.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => setCurrent(i)}
+                  className="rounded-full transition-all duration-200"
+                  style={{
+                    width: i === current ? 20 : 6,
+                    height: 6,
+                    background: i === current ? "#c8a96e" : "rgba(200,169,110,0.2)",
+                  }}
+                />
+              ))}
             </div>
-          ) : (
-            /* Placeholder */
-            <div className="flex flex-col items-center justify-center gap-4 py-24">
-              <div
-                className="w-16 h-16 rounded-full border-2 flex items-center justify-center"
-                style={{ borderColor: "rgba(200,169,110,0.3)" }}
+
+            <button
+              onClick={next}
+              className="w-9 h-9 rounded-full border flex items-center justify-center transition-colors duration-200 hover:border-[#c8a96e]/50"
+              style={{
+                background: "#0f0f0f",
+                borderColor: "rgba(200,169,110,0.2)",
+                color: "#c8a96e",
+              }}
+            >
+              <ChevronRight size={16} />
+            </button>
+          </div>
+
+          {/* Download links for each format */}
+          <div
+            className="flex flex-wrap gap-3 px-6 pb-6"
+          >
+            {INFOGRAPHICS.map((item) => (
+              <a
+                key={item.src}
+                href={item.src}
+                download
+                className="text-xs font-mono px-3 py-1.5 rounded border transition-colors duration-200"
+                style={{
+                  borderColor: "rgba(200,169,110,0.15)",
+                  color: "#6a6460",
+                }}
               >
-                <ImageIcon size={24} style={{ color: "#c8a96e" }} />
-              </div>
-              <p className="text-sm font-mono" style={{ color: "#3a3430" }}>
-                Infographics · Coming Soon
-              </p>
-            </div>
-          )}
+                ↓ {item.aspect}
+              </a>
+            ))}
+          </div>
         </motion.div>
       </div>
     </section>
