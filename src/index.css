@@ -1,0 +1,148 @@
+@import "tailwindcss";
+
+@theme {
+  /* ── Forge Brand Colors ─────────────────────────────────────────────────── */
+  --color-forge-orange: #ff6b35;
+  --color-forge-amber: #ffb800;
+  --color-forge-red: #e63946;
+  --color-forge-steel: #2d3142;
+  --color-forge-iron: #1a1d2e;
+  --color-forge-slate: #8896A8;
+  --color-forge-white: #f5f5f5;
+  --color-forge-green: #06d6a0;
+  --color-forge-rust: #c1440e;
+
+  /* ── DeathIsOptional Brand Colors ──────────────────────────────────────── */
+  --color-dio-bg: #080808;
+  --color-dio-surface: #0f0f0f;
+  --color-dio-raised: #161616;
+  --color-dio-border: #1e1e1e;
+  --color-dio-gold: #c8a96e;
+  --color-dio-gold-dim: #8a7048;
+  --color-dio-white: #f0ede8;
+  --color-dio-muted: #7a7470;
+  --color-dio-red: #b84040;
+
+  /* ── Font families ──────────────────────────────────────────────────────── */
+  --font-sans: "Inter", "Segoe UI", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", "Fira Code", "Courier New", monospace;
+
+  /* ── Animations ─────────────────────────────────────────────────────────── */
+  --animate-forge-pulse: forge-pulse 2s ease-in-out infinite;
+  --animate-glow: glow 2s ease-in-out infinite;
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-scan-line: scan-line 3s linear infinite;
+  --animate-heat-shimmer: heat-shimmer 3s ease-in-out infinite;
+  --animate-marquee: marquee 30s linear infinite;
+
+  @keyframes forge-pulse {
+    0%,
+    100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.05);
+    }
+  }
+
+  @keyframes glow {
+    0%,
+    100% {
+      box-shadow:
+        0 0 5px #ff6b35,
+        0 0 10px #ff6b35;
+    }
+    50% {
+      box-shadow:
+        0 0 20px #ff6b35,
+        0 0 40px #ff6b35,
+        0 0 60px #ff6b35;
+    }
+  }
+
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-12px);
+    }
+  }
+
+  @keyframes scan-line {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(100%);
+    }
+  }
+
+  @keyframes heat-shimmer {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.7;
+    }
+  }
+
+  @keyframes marquee {
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+}
+
+/* ── Base styles ──────────────────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-forge-iron);
+  color: var(--color-forge-white);
+  font-family: var(--font-sans);
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-forge-iron);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-forge-slate);
+  border-radius: 3px;
+}
+
+/* ── Selection ──────────────────────────────────────────────────────────── */
+::selection {
+  background: rgba(255, 107, 53, 0.3);
+  color: #fff;
+}
+
+/* ── Marquee container ──────────────────────────────────────────────────── */
+.marquee-container {
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.marquee-track {
+  display: inline-flex;
+  animation: marquee 30s linear infinite;
+}
