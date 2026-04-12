@@ -47,31 +47,13 @@ export function SlideshowSection() {
             borderColor: "rgba(200,169,110,0.12)",
           }}
         >
-          {/* PDF embed via object tag (bypasses X-Frame-Options) */}
-          <object
-            data={`${SLIDES_PDF}#view=FitH`}
-            type="application/pdf"
+          {/* PDF embed */}
+          <iframe
+            src={`${SLIDES_PDF}#view=FitH`}
             className="w-full"
-            style={{ height: 600 }}
-          >
-            <div className="flex flex-col items-center justify-center gap-4 py-20">
-              <p className="text-sm" style={{ color: "#6a6460" }}>
-                Your browser does not support inline PDF viewing.
-              </p>
-              <a
-                href={SLIDES_PDF}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-lg font-semibold text-sm transition-opacity duration-200 hover:opacity-90"
-                style={{
-                  background: "linear-gradient(135deg, #c8a96e, #a88a52)",
-                  color: "#080808",
-                }}
-              >
-                Open Slideshow PDF
-              </a>
-            </div>
-          </object>
+            style={{ height: 600, border: "none" }}
+            title="The Architecture of Immortality — Slides"
+          />
 
           {/* Actions */}
           <div
