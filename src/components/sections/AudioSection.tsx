@@ -1,8 +1,8 @@
 import { motion } from "framer-motion";
 import { Download } from "lucide-react";
 
-const AUDIO_SRC = "/Achieving_biological_immortality_through_coherence.m4a";
-const AUDIO_DOWNLOAD = "/Achieving_biological_immortality_through_coherence.m4a";
+const AUDIO_SRC = "/audio_overview.m4a";
+const AUDIO_DOWNLOAD = "/audio_overview.m4a";
 
 export function AudioSection() {
   return (
