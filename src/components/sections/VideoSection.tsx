@@ -1,8 +1,7 @@
 import { motion } from "framer-motion";
 import { Play } from "lucide-react";
 
-// PLACEHOLDER: Replace VIDEO_ID with actual YouTube video ID when available
-const VIDEO_ID = "";
+const VIDEO_ID = "2_ctxq5AFhE";
 
 export function VideoSection() {
   return (
